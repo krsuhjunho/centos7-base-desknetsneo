@@ -1,13 +1,11 @@
 ##BASE IMAGE
-FROM wnwnsgh/centos7-base-systemd
+FROM ghcr.io/krsuhjunho/centos7-base-systemd
 
 ##Utils Install
-RUN set -x  yum update -y && yum upgrade -y  && \
-yum install -y epel-release && \
-yum install -y wget htop httpd openssl vim unzip zip \
-openssh-server openssh-clients git \
-ncdu tree cronie gcc-c++ gnu-make \
+RUN yum install -y epel-release && \
+yum install -y make httpd gcc-c++ gnu-make \
 readline-devel zlib-devel &&\
+yum update -y &&\
 systemctl enable httpd; yum clean all
 
 #COPY SOURCE FILE

@@ -1,17 +1,27 @@
-  
 #!/bin/bash
 
 DOCKER_CONTAINER_NAME="neo-test"
 CONTAINER_HOST_NAME="neo-test"
 SSH_PORT=22457
 HTTP_PORT=8012
-BASE_IMAGE_NAME="wnwnsgh/centos7-base-desknetsneo"
+BASE_IMAGE_NAME="ghcr.io/krsuhjunho/centos7-base-desknetsneo"
 SERVER_IP=$(curl -s ifconfig.me)
 PC_URL="cgi-bin/dneo/dneo.cgi?"
 MOBILE_URL="cgi-bin/dneosp/dneosp.cgi"
 HTTP_BASE="http://"
+TODAY=$(date "+%Y-%m-%d")
+Comment="$1"
+
+
 
 docker build -t ${BASE_IMAGE_NAME} .
+
+docker push ${BASE_IMAGE_NAME}
+
+git add .
+git commit -m "${TODAY} ${Comment}"
+git push origin main
+
 
 docker rm -f ${DOCKER_CONTAINER_NAME}
 
