@@ -21,7 +21,7 @@ RUN /usr/local/src/RUN-INSTALL-DESKNETSNEO.sh && \
     rm -rf /usr/local/src/* 
 
 ##HEALTHCHECK 
-HEALTHCHECK --interval=30s --timeout=30s --start-period=30s --retries=3 CMD curl -f http://127.0.0.1/ || exit 1
+HEALTHCHECK --interval=30s --timeout=30s --start-period=30s --retries=3 CMD curl -f http://127.0.0.1/cgi-bin/dneo/dneo.cgi? || exit 1
 
 ##WORKDIR
 WORKDIR /var/www
