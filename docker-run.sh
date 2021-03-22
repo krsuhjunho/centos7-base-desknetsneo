@@ -64,7 +64,7 @@ echo "PC      	URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${PC_URL}"
 echo ""
 echo "MOBILE  	URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${MOBILE_URL}"
 echo ""
-echo "DNEOCONV  URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${CONV_URL}"
+echo "DNEOCONV	URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${CONV_URL}"
 echo ""
 
 
