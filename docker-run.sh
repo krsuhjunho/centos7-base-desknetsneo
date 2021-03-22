@@ -13,16 +13,16 @@ TIME_ZONE="Asia/Tokyo"
 TODAY=$(date "+%Y-%m-%d")
 COMMIT_COMMENT="$2"
 BUILD_OPTION="$1"
-
+DNEO_VER="4.0.1.3"
 
 DOCKER_IMAGE_BUILD()
 {
-docker build -t ${BASE_IMAGE_NAME} .
+docker build -t ${BASE_IMAGE_NAME}:${DNEO_VER} .
 }
 
 DOCKER_IMAGE_PUSH()
 {
-docker push ${BASE_IMAGE_NAME}
+docker push ${BASE_IMAGE_NAME}:${DNEO_VER}
 }
 
 GIT_COMMIT_PUSH()
@@ -30,7 +30,7 @@ GIT_COMMIT_PUSH()
 git add -u
 git commit -a -m "${TODAY} ${COMMIT_COMMENT}"
 git config credential.helper store
-git push origin main
+git push origin ${DNEO_VER}
 }
 
 DOCKER_CONTAINER_REMOVE()
@@ -47,7 +47,7 @@ docker run -tid --privileged=true \
 -v /etc/localtime:/etc/localtime:ro \
 -e TZ=${TIME_ZONE} \
 -p ${SSH_PORT}:22 -p ${HTTP_PORT}:80 \
-${BASE_IMAGE_NAME}
+${BASE_IMAGE_NAME}:${DNEO_VER}
 
 }
 
@@ -70,7 +70,7 @@ MAIN()
 {
 
 if [ "$BUILD_OPTION" == "--build" ]; then
-    DOCKER_IMAGE_BUILD
+	DOCKER_IMAGE_BUILD
 	DOCKER_IMAGE_PUSH
 	GIT_COMMIT_PUSH
 fi

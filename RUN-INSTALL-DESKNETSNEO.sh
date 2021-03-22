@@ -11,8 +11,9 @@ CGI_PATH="/var/www/cgi-bin"
 HTML_PATH="/var/www/html"
 DNEO_PATH="/var/www/cgi-bin/dneo"
 DNEOSP_PATH="/var/www/cgi-bin/dneosp"
-DNEOFILE_NAME="dneo_6.0.1.1_pg9.6_linux_x64.tar.gz"
+DNEOFILE_NAME="dneoV40R13pg96lRE6.tar.gz"
 DNEOFILE_URL="https://www.desknets.com/binary/neo/linuxpg96/${DNEOFILE_NAME}"
+DNEO_VER="4.0.1.3"
 
 ECHO_MESSAGE()
 {
@@ -31,7 +32,7 @@ su - ${POSTGRES_USER} -c 'pg_ctl -D /var/pgsql/data -l logfile start'
 ####################	DESKNETS NEO INSTALL	###################
 DESKNETSNEO_INSTALL()
 {
-ECHO_MESSAGE "DESKNETS NEO INSTALL"
+ECHO_MESSAGE "DESKNETS NEO ${DNEO_VER} INSTALL"
 cd ${CGI_PATH}
 wget ${DNEOFILE_URL}
 tar -zxf ${DNEOFILE_NAME}
