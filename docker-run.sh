@@ -8,6 +8,7 @@ BASE_IMAGE_NAME="ghcr.io/krsuhjunho/centos7-base-desknetsneo"
 SERVER_IP=$(curl -s ifconfig.me)
 PC_URL="cgi-bin/dneo/dneo.cgi?"
 MOBILE_URL="cgi-bin/dneosp/dneosp.cgi"
+CONV_URL="cgi-bin/dneoconv/dneoconv.cgi"
 HTTP_BASE="http://"
 TIME_ZONE="Asia/Tokyo"
 TODAY=$(date "+%Y-%m-%d")
@@ -59,10 +60,13 @@ docker exec -it ${DOCKER_CONTAINER_NAME} /bin/bash
 DOCKER_CONTAINER_URL_SHOW()
 {
 echo ""
-echo "PC      URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${PC_URL}"
+echo "PC      	URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${PC_URL}"
 echo ""
-echo "MOBILE  URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${MOBILE_URL}"
+echo "MOBILE  	URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${MOBILE_URL}"
 echo ""
+echo "DNEOCONV  URL => ${HTTP_BASE}${SERVER_IP}:${HTTP_PORT}/${CONV_URL}"
+echo ""
+
 
 }
 

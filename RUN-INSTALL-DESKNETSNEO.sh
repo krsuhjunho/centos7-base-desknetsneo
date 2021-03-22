@@ -70,15 +70,10 @@ DESKNETSNEO_CONV_INSTALL()
 ECHO_MESSAGE "DESKNETS NEO CONV ${DNEO_VER} INSTALL"
 cd ${CGI_PATH}
 wget ${DNEOCONV_URL}
-tar -zxf ${DNEOCONV_URL}
+tar -zxf ${DNEOCONV_NAME}
 chown -R ${USER_APACHE}:${USER_APACHE} ${DNEOCONV_PATH}
 mv ${DNEOCONV_PATH}/dneoconvres ${HTML_PATH}/.
 rm -rf ${DNEOCONV_NAME}
-
-ECHO_MESSAGE "CREATE USER DNEOCONV PGSQL"
-su - ${POSTGRES_USER} -c 'psql -d template1 -c "CREATE USER dneoconv WITH PASSWORD 'dneoconv' CREATEROLE"'<<EOF
-postgres
-EOF
 
 ECHO_MESSAGE "INIT START dneoconvdb.pg92.dump"
 su - ${POSTGRES_USER} -c 'pg_restore -C -Fc -d template1 /var/www/cgi-bin/dneoconv/dump/dneoconvdb.pg92.dump'<<EOF
