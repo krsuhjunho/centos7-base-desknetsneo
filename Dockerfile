@@ -26,7 +26,7 @@ RUN yum install -y -q make \
 ADD postgresql-9.6.21.tar.gz /usr/local/src
 
 #########################################################################
-#       NODE 10.24.0 Source File Copy                              		#
+#       NODE 10.24.0 Source File Copy                              	#
 #########################################################################
 ADD node-v10.24.0-linux-x64.tar.gz /usr/local/src
 
